@@ -1,3 +1,44 @@
 * {
   background-color: pink;
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  border: 3px solid purple;
+  margin: 5px;
+}
+
+.disc {
+  border: 3px solid purple;
+  border-radius: 50%;
+  height: 85px;
+  width: 85px;
+  margin: 10px;
+}
+.permDisc {
+  border: 3px solid purple;
+  border-radius: 50%;
+  height: 85px;
+  width: 85px;
+  margin: 10px;
+  background-color: purple;
+}
+
+/* .modal {
+  background-color: gray;
+  color: white;
+  padding: 30px;
+  width: 57vw;
+  max-width: 500px;
+  text-align: center;
+  border-radius: 20px;
+  position: fixed;
+  top: 55%;
+  transform: translateY(-45%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+} */
