@@ -1,33 +1,41 @@
 * {
   background-color: pink;
+  /* box-sizing: border-box; */
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: row;
-  border: 3px solid purple;
-  margin: 5px;
-}
+/* .container {
+  /* display: flex; */
+/* flex-wrap: wrap; */
+/* justify-content: center;
+  flex-direction: column; */
+/* border: 3px solid purple; */
+/* margin: 5px;
+  margin: 0 auto; */
+/* max-width: 700vw;
+  max-height: 600vh; */
 
-.disc {
+/* .col1,
+.col2,
+.col3,
+.col4,
+.col5,
+.col6,
+.col7 {
   border: 3px solid purple;
   border-radius: 50%;
-  height: 85px;
-  width: 85px;
+  height: 80px;
+  width: 80px;
   margin: 10px;
 }
 .permDisc {
   border: 3px solid purple;
   border-radius: 50%;
-  height: 85px;
-  width: 85px;
+  height: 80px;
+  width: 80px;
   margin: 10px;
   background-color: purple;
-}
-
-/* .modal {
+} */
+.modal {
   background-color: gray;
   color: white;
   padding: 30px;
@@ -41,4 +49,24 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-} */
+}
+.modal.closed {
+  display: none;
+}
+
+.container {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  height: 550px;
+  width: 650px;
+  margin: 0 auto;
+  border: 2px solid purple;
+}
+.col {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 3px solid steelblue;
+  margin: 5px;
+}
