@@ -1,81 +1,158 @@
 const getdivs = document.querySelector(".container");
 const modal = document.querySelector(".modal");
 const closingX = document.querySelector(".modal-close");
-// const getCol = document.querySelector(".column");
-// const getcol1 = document.getElementsByClassName("col-1");
+const h3 = document.querySelector("h3");
 
-// tried to close modal
 closingX.addEventListener("click", () => {
   modal.classList.add("closed");
 });
 
+function refreshPage() {
+  window.location.reload();
+}
+
 for (let i = 0; i < 6; i++) {
-  let addRow = document.createElement("div");
-  addRow.className = "row";
-
-  addRow.id = "r" + i;
-
-  getdivs.appendChild(addRow);
+  let addCol = document.createElement("div");
+  addCol.className = "col";
+  addCol.id = "c" + i;
+  getdivs.appendChild(addCol);
 }
 
-const getRow0 = document.querySelector("#r0");
-const getRow1 = document.querySelector("#r1");
-const getRow2 = document.querySelector("#r2");
-const getRow3 = document.querySelector("#r3");
-const getRow4 = document.querySelector("#r4");
-const getRow5 = document.querySelector("#r5");
-const getRow6 = document.querySelector("#r6");
+const getCol0 = document.querySelector("#c0");
+const getCol1 = document.querySelector("#c1");
+const getCol2 = document.querySelector("#c2");
+const getCol3 = document.querySelector("#c3");
+const getCol4 = document.querySelector("#c4");
+const getCol5 = document.querySelector("#c5");
+
+let arr = [];
 
 for (let i = 0; i < 7; i++) {
   let makeCol = document.createElement("div");
-  makeCol.className = "col";
-  makeCol.id = "c0" + "r" + i;
-  getRow0.appendChild(makeCol);
+  makeCol.className = "cols";
+  makeCol.id = "c0r" + i;
+  getCol0.appendChild(makeCol);
 }
 
 for (let i = 0; i < 7; i++) {
   let makeCol = document.createElement("div");
-  makeCol.className = "col";
+  makeCol.className = "cols";
   makeCol.id = "c1r" + i;
-  getRow1.appendChild(makeCol);
+  getCol1.appendChild(makeCol);
 }
+
 for (let i = 0; i < 7; i++) {
   let makeCol = document.createElement("div");
-  makeCol.className = "col";
+  makeCol.className = "cols";
   makeCol.id = "c2r" + i;
-  getRow2.appendChild(makeCol);
+  getCol2.appendChild(makeCol);
 }
 for (let i = 0; i < 7; i++) {
   let makeCol = document.createElement("div");
-  makeCol.className = "col";
+  makeCol.className = "cols";
   makeCol.id = "c3r" + i;
-  getRow3.appendChild(makeCol);
+  getCol3.appendChild(makeCol);
 }
 for (let i = 0; i < 7; i++) {
   let makeCol = document.createElement("div");
-  makeCol.className = "col";
+  makeCol.className = "cols";
   makeCol.id = "c4r" + i;
-  getRow4.appendChild(makeCol);
+  getCol4.appendChild(makeCol);
 }
 for (let i = 0; i < 7; i++) {
   let makeCol = document.createElement("div");
-  makeCol.className = "col";
+  makeCol.className = "cols";
   makeCol.id = "c5r" + i;
-  getRow5.appendChild(makeCol);
-}
-for (let i = 0; i < 7; i++) {
-  let makeCol = document.createElement("div");
-  makeCol.className = "col";
-  makeCol.id = "c6r" + i;
-  getRow6.appendChild(makeCol);
+  getCol5.appendChild(makeCol);
 }
 
-const clickMe = () => {
-  alert("hi sdfhsdn");
-};
+let player1 = true;
 
-const getDisc = document.querySelector("#r0");
-getDisc.addEventListener("click", clickMe);
+// document.getElementById("c5r0").onclick = changeColor;
+
+// function changeColor() {
+//   document.body.style.color = "purple";
+//   return false;
+// }
+
+getCol0.addEventListener("click", () => {
+  if (player1 === true) {
+    h3.innerHTML = "its player 1 turn";
+  } else {
+    h3.innerHTML = "its player 2 turn";
+  }
+  player1 = !player1;
+});
+
+getCol1.addEventListener("click", () => {
+  if (player1 === true) {
+    h3.innerHTML = "its player 1 turn";
+  } else {
+    h3.innerHTML = "its player 2 turn";
+  }
+  player1 = !player1;
+});
+
+getCol2.addEventListener("click", () => {
+  if (player1 === true) {
+    h3.innerHTML = "its player 1 turn";
+  } else {
+    h3.innerHTML = "its player 2 turn";
+  }
+  player1 = !player1;
+});
+getCol3.addEventListener("click", () => {
+  if (player1 === true) {
+    h3.innerHTML = "its player 1 turn";
+  } else {
+    h3.innerHTML = "its player 2 turn";
+  }
+  player1 = !player1;
+});
+getCol4.addEventListener("click", () => {
+  if (player1 === true) {
+    h3.innerHTML = "its player 1 turn";
+  } else {
+    h3.innerHTML = "its player 2 turn";
+  }
+  player1 = !player1;
+});
+getCol5.addEventListener("click", () => {
+  if (player1 === true) {
+    h3.innerHTML = "its player 1 turn";
+  } else {
+    h3.innerHTML = "its player 2 turn";
+  }
+  player1 = !player1;
+});
+
+// function myFunction() {
+//     document.querySelectorAll(".cols").style.color = "red";}
+// const getColly = document.querySelectorAll(".cols");
+// console.log(getColly);
+// getColly.addEventListener("click", () => {
+//   getColly.className.add("style");
+// });
+// const clickMe = (clr) => {
+//   getCol0.classList.add("red");
+// };
+// // const getCol6 = document.querySelector("#r6");
+// getCol0.addEventListener("click", clickMe);
+// getRow1.addEventListener("click", clickMe);
+// getRow2.addEventListener("click", clickMe);
+// getRow3.addEventListener("click", clickMe);
+// getRow4.addEventListener("click", clickMe);
+// getRow5.addEventListener("click", clickMe);
+// getRow6.addEventListener("click", clickMe);
+
+// const clickMeAgain = () => {
+//   getCol1.classList.add("red");
+// };
+// const getCol1 = document.querySelector(".row");
+// getCol1.addEventListener("click", clickMeAgain);
+
+// const getCol = document.querySelector(".column");
+// const getcol1 = document.getElementsByClassName("col-1");
 
 // for (let i = 0; i < 6; i++) {
 //   let newDiv = document.createElement("div");

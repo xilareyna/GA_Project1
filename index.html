@@ -9,14 +9,24 @@
   </head>
   <body>
     <h1>Connect 4</h1>
-    <h3>The current Player is: Player</h3>
+    <h3>The current Player is: <span class="play">Player</span></h3>
 
     <div class="modal">
       <button class="modal-close">x</button>
       <p>welcome to connect 4</p>
     </div>
+    <button type="button" id="btn" onClick="refreshPage()">Play Again</button>
 
     <div class="container"></div>
+
+    <div class="permCellContainer">
+      <div class="permCell"></div>
+      <div class="permCell"></div>
+      <div class="permCell"></div>
+      <div class="permCell"></div>
+      <div class="permCell"></div>
+      <div class="permCell"></div>
+    </div>
 
     <script src="app.js"></script>
   </body>
