@@ -11,128 +11,147 @@ function refreshPage() {
   window.location.reload();
 }
 
-for (let i = 0; i < 6; i++) {
-  let addCol = document.createElement("div");
-  addCol.className = "col";
-  addCol.id = "c" + i;
-  getdivs.appendChild(addCol);
-}
+// for (let i = 0; i < 6; i++) {
+//   let addCol = document.createElement("div");
+//   addCol.className = "col";
+//   addCol.id = "c" + i;
+//   getdivs.appendChild(addCol);
+// }
 
-const getCol0 = document.querySelector("#c0");
-const getCol1 = document.querySelector("#c1");
-const getCol2 = document.querySelector("#c2");
-const getCol3 = document.querySelector("#c3");
-const getCol4 = document.querySelector("#c4");
-const getCol5 = document.querySelector("#c5");
-
-let arr = [];
-
-for (let i = 0; i < 7; i++) {
-  let makeCol = document.createElement("div");
-  makeCol.className = "cols";
-  makeCol.id = "c0r" + i;
-  getCol0.appendChild(makeCol);
-}
-
-for (let i = 0; i < 7; i++) {
-  let makeCol = document.createElement("div");
-  makeCol.className = "cols";
-  makeCol.id = "c1r" + i;
-  getCol1.appendChild(makeCol);
-}
-
-for (let i = 0; i < 7; i++) {
-  let makeCol = document.createElement("div");
-  makeCol.className = "cols";
-  makeCol.id = "c2r" + i;
-  getCol2.appendChild(makeCol);
-}
-for (let i = 0; i < 7; i++) {
-  let makeCol = document.createElement("div");
-  makeCol.className = "cols";
-  makeCol.id = "c3r" + i;
-  getCol3.appendChild(makeCol);
-}
-for (let i = 0; i < 7; i++) {
-  let makeCol = document.createElement("div");
-  makeCol.className = "cols";
-  makeCol.id = "c4r" + i;
-  getCol4.appendChild(makeCol);
-}
-for (let i = 0; i < 7; i++) {
-  let makeCol = document.createElement("div");
-  makeCol.className = "cols";
-  makeCol.id = "c5r" + i;
-  getCol5.appendChild(makeCol);
+for (let a = 0; a < 6; a++) {
+  let addCo = document.createElement("div");
+  addCo.className = "col";
+  addCo.id = "c" + a;
+  getdivs.appendChild(addCo);
+  for (let i = 0; i < 7; i++) {
+    let makeCol = document.createElement("div");
+    makeCol.className = "cols";
+    id = "c" + a + "r" + i;
+    makeCol.id = id;
+    addCo.appendChild(makeCol);
+    document.getElementById(id).addEventListener("click", function (e) {
+      changeCSS(e.target.id);
+    });
+  }
 }
 
 let player1 = true;
 
+function changeCSS(id) {
+  if (player1 === true) {
+    h3.innerHTML = "its player 2 turn";
+    document.getElementById(id).style.backgroundColor = "purple";
+  } else {
+    h3.innerHTML = "its player 1 turn";
+    document.getElementById(id).style.backgroundColor = "blue";
+  }
+  player1 = !player1;
+}
+
 // document.getElementById("c5r0").onclick = changeColor;
 
-// function changeColor() {
-//   document.body.style.color = "purple";
-//   return false;
+//
+// for (let k=0; )
+
+// getCol0.addEventListener("click", () => {
+//   if (player1 === true) {
+//     h3.innerHTML = "its player 1 turn";
+//   } else {
+//     h3.innerHTML = "its player 2 turn";
+//   }
+//   player1 = !player1;
+// });
+
+// getCol1.addEventListener("click", () => {
+//   if (player1 === true) {
+//     h3.innerHTML = "its player 1 turn";
+//   } else {
+//     h3.innerHTML = "its player 2 turn";
+//   }
+//   player1 = !player1;
+// });
+
+// getCol2.addEventListener("click", () => {
+//   if (player1 === true) {
+//     h3.innerHTML = "its player 1 turn";
+//   } else {
+//     h3.innerHTML = "its player 2 turn";
+//   }
+//   player1 = !player1;
+// });
+// getCol3.addEventListener("click", () => {
+//   if (player1 === true) {
+//     h3.innerHTML = "its player 1 turn";
+//   } else {
+//     h3.innerHTML = "its player 2 turn";
+//   }
+//   player1 = !player1;
+// });
+// getCol4.addEventListener("click", () => {
+//   if (player1 === true) {
+//     h3.innerHTML = "its player 1 turn";
+//   } else {
+//     h3.innerHTML = "its player 2 turn";
+//   }
+//   player1 = !player1;
+// });
+// getCol5.addEventListener("click", () => {
+//   if (player1 === true) {
+//     h3.innerHTML = "its player 1 turn";
+//   } else {
+//     h3.innerHTML = "its player 2 turn";
+//   }
+//   player1 = !player1;
+// });
+
+// const getCol0 = document.querySelector("#c0");
+// const getCol1 = document.querySelector("#c1");
+// const getCol2 = document.querySelector("#c2");
+// const getCol3 = document.querySelector("#c3");
+// const getCol4 = document.querySelector("#c4");
+// const getCol5 = document.querySelector("#c5");
+
+//
+// for (let i = 0; i < 7; i++) {
+//   let makeCol = document.createElement("div");
+//   makeCol.className = "cols";
+//   makeCol.id = "c1r" + i;
+//   getCol1.appendChild(makeCol);
 // }
 
-getCol0.addEventListener("click", () => {
-  if (player1 === true) {
-    h3.innerHTML = "its player 1 turn";
-  } else {
-    h3.innerHTML = "its player 2 turn";
-  }
-  player1 = !player1;
-});
-
-getCol1.addEventListener("click", () => {
-  if (player1 === true) {
-    h3.innerHTML = "its player 1 turn";
-  } else {
-    h3.innerHTML = "its player 2 turn";
-  }
-  player1 = !player1;
-});
-
-getCol2.addEventListener("click", () => {
-  if (player1 === true) {
-    h3.innerHTML = "its player 1 turn";
-  } else {
-    h3.innerHTML = "its player 2 turn";
-  }
-  player1 = !player1;
-});
-getCol3.addEventListener("click", () => {
-  if (player1 === true) {
-    h3.innerHTML = "its player 1 turn";
-  } else {
-    h3.innerHTML = "its player 2 turn";
-  }
-  player1 = !player1;
-});
-getCol4.addEventListener("click", () => {
-  if (player1 === true) {
-    h3.innerHTML = "its player 1 turn";
-  } else {
-    h3.innerHTML = "its player 2 turn";
-  }
-  player1 = !player1;
-});
-getCol5.addEventListener("click", () => {
-  if (player1 === true) {
-    h3.innerHTML = "its player 1 turn";
-  } else {
-    h3.innerHTML = "its player 2 turn";
-  }
-  player1 = !player1;
-});
+// for (let i = 0; i < 7; i++) {
+//   let makeCol = document.createElement("div");
+//   makeCol.className = "cols";
+//   makeCol.id = "c2r" + i;
+//   getCol2.appendChild(makeCol);
+// }
+// for (let i = 0; i < 7; i++) {
+//   let makeCol = document.createElement("div");
+//   makeCol.className = "cols";
+//   makeCol.id = "c3r" + i;
+//   getCol3.appendChild(makeCol);
+// }
+// for (let i = 0; i < 7; i++) {
+//   let makeCol = document.createElement("div");
+//   makeCol.className = "cols";
+//   makeCol.id = "c4r" + i;
+//   getCol4.appendChild(makeCol);
+// }
+// for (let i = 0; i < 7; i++) {
+//   let makeCol = document.createElement("div");
+//   makeCol.className = "cols";
+//   makeCol.id = "c5r" + i;
+//   getCol5.appendChild(makeCol);
+// }
 
 // function myFunction() {
-//     document.querySelectorAll(".cols").style.color = "red";}
-// const getColly = document.querySelectorAll(".cols");
+//   document.querySelectorAll(".cols").style.color = "red";
+// }
+const getColly = document.querySelector(".cols");
 // console.log(getColly);
-// getColly.addEventListener("click", () => {
-//   getColly.className.add("style");
-// });
+getColly.addEventListener("click", () => {
+  getColly.classList.add("style");
+});
 // const clickMe = (clr) => {
 //   getCol0.classList.add("red");
 // };
