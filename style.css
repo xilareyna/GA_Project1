@@ -1,6 +1,9 @@
-* {
-  background-color: pink;
-  /* box-sizing: border-box; */
+/* * {
+  /* background-image: url(https://unsplash.com/photos/IeuKPmWhXmQ); */
+/* box-sizing: border-box; */
+/* } */
+body {
+  background-image: url(https://images.unsplash.com/photo-1604871038809-0462d7c3a3a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjcyNTgzfQ&auto=format&fit=crop&w=1050&q=80);
 }
 
 .modal {
@@ -37,6 +40,7 @@
   border-radius: 50%;
   border: 3px solid steelblue;
   margin: 5px;
+  background-color: white;
 }
 .permCellContainer {
   display: flex;
@@ -54,6 +58,13 @@
 
 .style {
   background-color: indigo;
+}
+.taken {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 3px solid steelblue;
+  margin: 5px;
 }
 
 /* .container {

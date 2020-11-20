@@ -11,29 +11,50 @@ function refreshPage() {
   window.location.reload();
 }
 
-// for (let i = 0; i < 6; i++) {
-//   let addCol = document.createElement("div");
-//   addCol.className = "col";
-//   addCol.id = "c" + i;
-//   getdivs.appendChild(addCol);
-// }
+let arr = [];
 
 for (let a = 0; a < 6; a++) {
   let addCo = document.createElement("div");
   addCo.className = "col";
   addCo.id = "c" + a;
+  //   arr[a] = ["c" + a];
   getdivs.appendChild(addCo);
   for (let i = 0; i < 7; i++) {
     let makeCol = document.createElement("div");
     makeCol.className = "cols";
+
     id = "c" + a + "r" + i;
+
+    // arr[i] = ["r" + i];
+
+    // arr[a][i] = [a + i];
+
+    // arr.push("id");
+    // console.table(arr);
+
+    // console.log(id);
+
     makeCol.id = id;
+
     addCo.appendChild(makeCol);
+
     document.getElementById(id).addEventListener("click", function (e) {
+      //   makeCol.setAttribute("class", "taken");
+      //   arr[i] = player1;
+
       changeCSS(e.target.id);
     });
   }
 }
+
+// make 6x7 color in grid
+// set array value to "a" which means circle is colored in
+// Array[0][0] = “a”
+// fill in row takes in column and string
+//set 2d array to string value
+//pass a to string
+// invocation of function looks like : FillInRow(1, 2 “a”)
+//
 
 let player1 = true;
 
@@ -41,6 +62,7 @@ function changeCSS(id) {
   if (player1 === true) {
     h3.innerHTML = "its player 2 turn";
     document.getElementById(id).style.backgroundColor = "purple";
+    // document.getElementById("c0").style.backgroundColor = "green";
   } else {
     h3.innerHTML = "its player 1 turn";
     document.getElementById(id).style.backgroundColor = "blue";
@@ -48,6 +70,27 @@ function changeCSS(id) {
   player1 = !player1;
 }
 
+// let activities = [
+//   ["Work", 9],
+//   ["Eat", 1],
+//   ["Commute", 2],
+//   ["Play Game", 1],
+//   ["Sleep", 7],
+// ];
+// console.table(activities);
+
+// const getIDZ = document.querySelectorAll(".taken");
+// if (getIDZ === true) {
+//   alert("that cell is taken");
+// }
+// console.log(getIDZ);
+
+// for (let i = 0; i < 6; i++) {
+//   let addCol = document.createElement("div");
+//   addCol.className = "col";
+//   addCol.id = "c" + i;
+//   getdivs.appendChild(addCol);
+// }
 // document.getElementById("c5r0").onclick = changeColor;
 
 //
@@ -147,11 +190,11 @@ function changeCSS(id) {
 // function myFunction() {
 //   document.querySelectorAll(".cols").style.color = "red";
 // }
-const getColly = document.querySelector(".cols");
-// console.log(getColly);
-getColly.addEventListener("click", () => {
-  getColly.classList.add("style");
-});
+// const getColly = document.querySelector(".cols");
+// // console.log(getColly);
+// getColly.addEventListener("click", () => {
+//   getColly.classList.add("style");
+// });
 // const clickMe = (clr) => {
 //   getCol0.classList.add("red");
 // };
