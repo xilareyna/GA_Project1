@@ -17,21 +17,25 @@ for (let a = 0; a < 6; a++) {
   let addCo = document.createElement("div");
   addCo.className = "col";
   addCo.id = "c" + a;
+
+  //   document.getElementById(addCo.id).addEventListener("click", function (e) {
+  //     //   makeCol.setAttribute("class", "taken");
+  //     //   arr[i] = player1;
+
+  //     changeCSS(e.target.id);
+  //   });
   //   arr[a] = ["c" + a];
   getdivs.appendChild(addCo);
   for (let i = 0; i < 7; i++) {
     let makeCol = document.createElement("div");
-    makeCol.className = "cols";
+    makeCol.className = "row";
 
     id = "c" + a + "r" + i;
 
     // arr[i] = ["r" + i];
-
     // arr[a][i] = [a + i];
-
     // arr.push("id");
     // console.table(arr);
-
     // console.log(id);
 
     makeCol.id = id;
@@ -39,12 +43,56 @@ for (let a = 0; a < 6; a++) {
     addCo.appendChild(makeCol);
 
     document.getElementById(id).addEventListener("click", function (e) {
-      //   makeCol.setAttribute("class", "taken");
       //   arr[i] = player1;
+      const colNum = Number(e.target.id[1]);
+      const rowNum = Number(e.target.id[3]);
 
-      changeCSS(e.target.id);
+      changeCSS(colNum, rowNum);
     });
   }
+}
+
+let player1 = true;
+
+function changeCSS(colNum, rowNum) {
+  // for (i=0;  )
+  const num0 = 0;
+  const num1 = 1;
+  const num2 = 2;
+  const num3 = 3;
+  const num4 = 4;
+  const num5 = 5;
+  const num6 = 6;
+
+  for (let i = 0; i < 6; i++) {
+    colNum[i];
+    rowNum[i];
+    if (colNum === 0 && rowNum === 0) {
+      if (
+        !document.getElementById(colNum, rowNum).classList.contains("taken")
+      ) {
+        document.getElementById(colNum, rowNum).setAttribute("class", "taken");
+
+        changeCellColor(colNum, rowNum);
+      } else if (
+        !document.querySelector(colNum, rowNum).classList.contains("taken")
+      ) {
+        changeCellColor(colNum, rowNum);
+      }
+    }
+  }
+}
+
+function changeCellColor(id) {
+  if (player1 === true) {
+    h3.innerHTML = "its player 2 turn";
+    document.getElementById(id).style.backgroundColor = "#8CCFF3";
+    // document.getElementById("c0").style.backgroundColor = "green";
+  } else {
+    h3.innerHTML = "its player 1 turn";
+    document.getElementById(id).style.backgroundColor = "#B292F5";
+  }
+  player1 = !player1;
 }
 
 // make 6x7 color in grid
@@ -54,21 +102,11 @@ for (let a = 0; a < 6; a++) {
 //set 2d array to string value
 //pass a to string
 // invocation of function looks like : FillInRow(1, 2 “a”)
+//using function to populate array
+// then connect to board
+// get id from onclicl function
+// parse id into parameter to call function
 //
-
-let player1 = true;
-
-function changeCSS(id) {
-  if (player1 === true) {
-    h3.innerHTML = "its player 2 turn";
-    document.getElementById(id).style.backgroundColor = "purple";
-    // document.getElementById("c0").style.backgroundColor = "green";
-  } else {
-    h3.innerHTML = "its player 1 turn";
-    document.getElementById(id).style.backgroundColor = "blue";
-  }
-  player1 = !player1;
-}
 
 // let activities = [
 //   ["Work", 9],
