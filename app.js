@@ -2,111 +2,185 @@ const getdivs = document.querySelector(".container");
 const modal = document.querySelector(".modal");
 const closingX = document.querySelector(".modal-close");
 const h3 = document.querySelector("h3");
+const players = {
+  player1: true,
+  player2: false,
 
+  switchPlayer() {
+    players.player1 = !players.player1;
+    players.player2 = !players.player2;
+  },
+  whoseTurn() {
+    if (players.player1) {
+      return { player: "p1", color: "blue" };
+    } else {
+      return {
+        player: "p2",
+        color: "purple",
+      };
+    }
+  },
+};
+// closes the modal
 closingX.addEventListener("click", () => {
   modal.classList.add("closed");
 });
-
+// adds functionality to the "Play Again" button (reloads page)
 function refreshPage() {
   window.location.reload();
 }
 
-let arr = [];
+//creates the 6 columns for the game board
+//& appends the columns to parent element
+for (let c = 0; c < 6; c++) {
+  let addCol = document.createElement("div");
+  addCol.className = "col";
+  addCol.id = "c" + c;
+  getdivs.appendChild(addCol);
 
-for (let a = 0; a < 6; a++) {
-  let addCo = document.createElement("div");
-  addCo.className = "col";
-  addCo.id = "c" + a;
+  // creates the 7 rows for the game board and
+  //appends them to the columns above
+  for (let r = 0; r < 7; r++) {
+    let makeRow = document.createElement("div");
+    makeRow.className = "row";
 
-  //   document.getElementById(addCo.id).addEventListener("click", function (e) {
-  //     //   makeCol.setAttribute("class", "taken");
-  //     //   arr[i] = player1;
+    let id = "c" + c + "r" + r;
 
-  //     changeCSS(e.target.id);
-  //   });
-  //   arr[a] = ["c" + a];
-  getdivs.appendChild(addCo);
-  for (let i = 0; i < 7; i++) {
-    let makeCol = document.createElement("div");
-    makeCol.className = "row";
+    makeRow.id = id;
 
-    id = "c" + a + "r" + i;
+    addCol.appendChild(makeRow);
 
-    // arr[i] = ["r" + i];
-    // arr[a][i] = [a + i];
-    // arr.push("id");
-    // console.table(arr);
-    // console.log(id);
+    let getCols = document.getElementsByClassName("col");
+    let getRows = document.getElementsByClassName("row");
+    let boardHeight = getCols.length;
+    console.log(boardHeight);
+    //    document.getElementById(id).addEventListener("click", function (e) {
+    //       changeCSS(e.target.id);
+    //     });
 
-    makeCol.id = id;
-
-    addCo.appendChild(makeCol);
+    // added event listener here because of what I had before and added
+    //to the event with code inspo that arthur sent
 
     document.getElementById(id).addEventListener("click", function (e) {
-      //   arr[i] = player1;
-      const colNum = Number(e.target.id[1]);
-      const rowNum = Number(e.target.id[3]);
+      let target = e.currentTarget;
 
-      changeCSS(colNum, rowNum);
+      let rows = document.querySelectorAll(".row");
+
+      for (let rowz = boardHeight - 1; rowz >= 0; rowz--) {
+        let rowChild = getCols[rowz].children;
+        // console.log(rowChild);
+        for (let col = 0; col < rowChild.length; col++) {
+          console.log(rowChild[col].getAttribute("id"));
+          if (rowChild[col].getAttribute("id") === target.getAttribute("id")) {
+            // if (rowChild[col].style.backgroundColor === "white") {
+            if (players.whoseTurn().player === "p1") {
+              // rowChild[col].style.backgroundColor = "#8CCFF3";
+              console.log("im running");
+              const bottomId = "#c" + c + "r" + 6;
+              changeCellColor(bottomId, 6, "blue");
+              checkForWins();
+
+              return;
+            } else {
+              const bottomId = "#c" + c + "r" + 6;
+              changeCellColor(bottomId, 6, "purple");
+              checkForWins();
+
+              return;
+            }
+            // }
+          }
+        }
+        function changeCellColor(id, rowNumber, color) {
+          if (true) {
+            if (!document.querySelector(id).getAttribute("data-taken")) {
+              document.querySelector(id).style.backgroundColor = color;
+              document
+                .querySelector(id)
+                .setAttribute("data-taken", players.whoseTurn().player);
+              console.log(document.querySelector(id));
+            } else {
+              for (let i = rowNumber - 1; i > 0; i--) {
+                if (checkOtherCells(`#c${c}r${i}`)) {
+                  continue;
+                } else {
+                  id = `#c${c}r${i}`;
+                  break;
+                }
+              }
+              document.querySelector(id).style.backgroundColor = color;
+              document
+                .querySelector(id)
+                .setAttribute("data-taken", players.whoseTurn().player);
+              console.log(document.querySelector(id));
+            }
+            // document.getElementById("c0").style.backgroundColor = "green";
+          } else {
+            h3.innerHTML = "its player 1 turn";
+            document.querySelector(id).style.backgroundColor = "#B292F5";
+          }
+          players.switchPlayer();
+          h3.innerHTML =
+            players.whoseTurn().player === "p1"
+              ? "its player 1 turn"
+              : "its player 2 turn";
+        }
+
+        function checkOtherCells(id) {
+          return !!document.querySelector(id).getAttribute("data-taken");
+        }
+      }
     });
   }
 }
 
 let player1 = true;
 
-function changeCSS(colNum, rowNum) {
-  // for (i=0;  )
-  const num0 = 0;
-  const num1 = 1;
-  const num2 = 2;
-  const num3 = 3;
-  const num4 = 4;
-  const num5 = 5;
-  const num6 = 6;
+function checkForWins() {
+  for (let i = 0; i < rows.length; i++) {
+    let currentRow = rows[i].children;
 
-  for (let i = 0; i < 6; i++) {
-    colNum[i];
-    rowNum[i];
-    if (colNum === 0 && rowNum === 0) {
+    for (let x = 0; x < 4; x++) {
+      let currentCell = currentRow[x];
+
+      console.log(currentCell.style.backgroundColor);
       if (
-        !document.getElementById(colNum, rowNum).classList.contains("taken")
+        currentCell.style.backgroundColor !== "white" &&
+        currentCell.style.backgroundColor ===
+          currentRow[x + 1].style.backgroundColor &&
+        currentCell.style.backgroundColor ===
+          currentRow[x + 2].style.backgroundColor &&
+        currentCell.style.backgroundColor ===
+          currentRow[x + 3].style.backgroundColor
       ) {
-        document.getElementById(colNum, rowNum).setAttribute("class", "taken");
-
-        changeCellColor(colNum, rowNum);
-      } else if (
-        !document.querySelector(colNum, rowNum).classList.contains("taken")
-      ) {
-        changeCellColor(colNum, rowNum);
+        alert(player1 + " Wins!");
       }
     }
   }
 }
 
-function changeCellColor(id) {
-  if (player1 === true) {
-    h3.innerHTML = "its player 2 turn";
-    document.getElementById(id).style.backgroundColor = "#8CCFF3";
-    // document.getElementById("c0").style.backgroundColor = "green";
-  } else {
-    h3.innerHTML = "its player 1 turn";
-    document.getElementById(id).style.backgroundColor = "#B292F5";
-  }
-  player1 = !player1;
-}
+// if (
+//     !document.getElementById(colNum, rowNum).classList.contains("taken")
+// ) {
+//     document.getElementById(colNum, rowNum).setAttribute("class", "taken");
 
-// make 6x7 color in grid
-// set array value to "a" which means circle is colored in
-// Array[0][0] = “a”
-// fill in row takes in column and string
-//set 2d array to string value
-//pass a to string
-// invocation of function looks like : FillInRow(1, 2 “a”)
-//using function to populate array
-// then connect to board
-// get id from onclicl function
-// parse id into parameter to call function
-//
+//     changeCellColor(colNum, rowNum);
+// } else if (
+//     !document.getElementById(colNum, rowNum).classList.contains("taken")
+// ) {
+//     changeCellColor(colNum, rowNum);
+// }
+//   arr[i] = player1;
+//   const colNum = Number(e.target.id[1]);
+//   const rowNum = Number(e.target.id[3]);
+
+//   document.getElementById(addCo.id).addEventListener("click", function (e) {
+//     //   makeCol.setAttribute("class", "taken");
+//     //   arr[i] = player1;
+
+//     changeCSS(e.target.id);
+//   });
+//   arr[a] = ["c" + a];
 
 // let activities = [
 //   ["Work", 9],
